@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>manyuet</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+<body>
+<div id="frame">
+  <div id="result-bar">
+<div class="result" style="font-size: 55px;text-align: right">
+  <span class="result-number" style="padding: 0 10px;">0</span>
+</div>
+  </div>
+  <div id="number-bar">
+    <div id="first-line">
+    <div class="operate-clean" onclick="cleanAll()" style="width: 100%;height: 100%;font-size: x-large">AC</div>
+    <div class="operate status-change" onclick="statusChange()" style="width: 100%;height: 100%;font-size: x-large" >+/-</div>
+    <div class="operate percent" onclick="percent()" style="width: 100%;height: 100%;font-size: x-large">%</div>
+    <div class="operate divide" onclick="operator('/')" style="background-color: rgb(253,158,43);width: 100%;height: 100%;font-size: x-large">/</div>
+    </div>
+    <div id="second-line">
+      <div class="number" onclick="clickNumber('7')" style="width: 100%;height: 100%;font-size: x-large"  >7</div>
+      <div class="number" onclick="clickNumber('8')" style="width: 100%;height: 100%;font-size: x-large">8</div>
+      <div class="number" onclick="clickNumber('9')" style="width: 100%;height: 100%;font-size: x-large">9</div>
+    <div class="operate multiple" onclick="operator('*')" style="background-color: rgb(253,158,43);width: 100%;height: 100%;font-size: x-large">*</div>
+    </div>
+    <div id="third-line">
+      <div class="number" onclick="clickNumber('4')" style="width: 100%;height: 100%;font-size: x-large">4</div>
+      <div class="number" onclick="clickNumber('5')" style="width: 100%;height: 100%;font-size: x-large">5</div>
+      <div class="number" onclick="clickNumber('6')" style="width: 100%;height: 100%;font-size: x-large">6</div>
+    <div class="operate cut" onclick="operator('-')" style="background-color: rgb(253,158,43);width: 100%;height: 100%;font-size: x-large">-</div>
+    </div>
+    <div id="fourth-line">
+      <div class="number" onclick="clickNumber('1')" style="width: 100%;height: 100%;font-size: x-large">1</div>
+    <div class="number" onclick="clickNumber('2')" style="width: 100%;height: 100%;font-size: x-large">2</div>
+    <div class="number" onclick="clickNumber('3')" style="width: 100%;height: 100%;font-size: x-large">3</div>
+    <div class="operate add" onclick="operator('+')" style="background-color: rgb(253,158,43);width: 100%;height: 100%;font-size: x-large">+</div>
+    </div>
+    <div id="fifth-line">
+    <div class="zero-number" onclick="clickNumber('0')" style="width: 100%;height: 100%;font-size: x-large">0</div>
+    <div class="point-symbol" onclick="point()"  style="width: 100%;height: 100%;font-size: x-large">.</div>
+    <div class="equal-symbol" onclick="calculate()"  style="background-color: rgb(253,158,43);width: 100%;height: 100%;font-size: x-large">=</div>
+    </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+#frame{
+  background-color: #555555;
+  width: 300px;
+  height: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#result-bar{
+  background-color: rgb(49,44,42);
+  width: 300px;
+  height: 20%;
+  position: relative;
+}
+.result{
+  float: right;
+  width: 100%;
+  height: 100%;
+  color: aliceblue;
+  position: relative;
+  bottom: -20px;
+  font-size: 20px;
+}
+.result-number{
+  position: relative;
+}
+#number-bar{
+  width: 300px;
+  height: 80%;
+}
+#first-line{
+  display: flex;
+  float: left;
+  width: 100%;
+  height:20% ;
+}
+.operate{
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(75,62,67);
+  color: aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+
+.operate-clean{
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(75,62,67);
+  color: aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+#second-line{
+  display: flex;
+  float: left;
+  width: 100%;
+  height:20% ;
+}
+.number{
+  display: inline-block;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(110,100,100);
+  color: aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+.number:active{
+  background-color: #a8afb5;
+}
+#third-line{
+  display: flex;
+  float: left;
+  width: 100%;
+  height:20% ;
+}
+
+#fourth-line{
+  display:flex;
+  float: left;
+  width: 100%;
+  height:20% ;
+}
+
+#fifth-line{
+  display:flex;
+  float: left;
+  width: 100%;
+  height:20% ;
+}
+.zero-number{
+  flex:2;
+  width: 50%;
+  height: 100%;
+  background-color: rgb(110,100,100);
+  color: aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+.zero-number:active{
+  background-color: #a8afb5;
+}
+.point-symbol {
+  flex: 1;
+  width: 25%;
+  height: 100%;
+  background-color: rgb(110,100,100);;
+
+  color:aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+.point-symbol:active{
+  background-color: #a8afb5;
+}
+.equal-symbol{
+  flex:1;
+  width: 25%;
+  height: 100%;
+  background-color: aliceblue;
+
+  color: aliceblue;
+  text-align: center;
+  line-height:77px;
+}
+.equal-symbol:active{
+  background-color: #fab34d;
+}
+.operate-clean:active{
+  background-color: rgb(110,100,100);
+}
+.status-change:active{
+  background-color: rgb(110,100,100);
+}
+.percent:active{
+  background-color: rgb(110,100,100);
+}
+
+

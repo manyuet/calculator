@@ -1,21 +1,21 @@
 let operatorNum1;
 let operatorNum2;
 let operatorType;
-let needReset = false;
+let needReset = false;//是否需要将数字拼接在后面或者重新显示新的
 let fontSize1 = 55;
 let fontSize2 = 55;
 let judgeCaculate=0;
-window.document.onkeydown = function (event) {
+window.document.onkeydown = function (event) {//可以使用键盘输入，跟键盘数字运算符绑定
   let e = event || window.event || arguments.callee.caller.arguments[0];
   const operatorTypeList = ['+','-','*','/'];
-  if(e.key>=0 && e.key <=9){
+  if(e.key>=0 && e.key <=9){//键盘输入数字
     clickNumber(String(e.key))
-  }else if(operatorTypeList.includes(e.key)){
+  }else if(operatorTypeList.includes(e.key)){//输入运算符
     operator(e.key)
-  }else if(e.key === '=' || e.keyCode === 13){
+  }else if(e.key === '=' || e.keyCode === 13){//enter运算符
     calculate()
   }
-  else if(e.keyCode===8){
+  else if(e.keyCode===8){//delete运算符
     if(getResultDiv().innerHTML.length>1) {
         getResultDiv().innerHTML = getResultDiv().innerHTML.slice(0, -1);
     }
@@ -23,7 +23,7 @@ window.document.onkeydown = function (event) {
         getResultDiv().innerHTML=0;
     }
   }
-  else if(e.keyCode===190){
+  else if(e.keyCode===190){//点运算符
     point();
   }
 };
@@ -38,7 +38,7 @@ function changeFontSize() {
   if(resultLength <= 7){
     resultDivStyle.fontSize = '55px';
   }else{
-    if(operatorType) {
+    if(operatorType) {//fontSize1 和fontSize2为了区分2个操作数的字体大小，取字体小的size显示
       resultDivStyle.fontSize = fontSize2 + 'px';
       if (fontSize2 > 30) {
         fontSize2 -= 5;
@@ -73,7 +73,6 @@ function clickNumber(number) {
     resultDiv.innerHTML += number;
     changeFontSize();
   }
-  console.log(judgeCaculate);
   if(operatorType){
     operatorNum2 = Number(getResultDiv().innerHTML);
   }else{
@@ -82,10 +81,8 @@ function clickNumber(number) {
   if(getResultDiv().innerHTML.length>=32){
     getResultDiv().innerHTML = getResultDiv().innerHTML.slice(1,-1) + '0';
   }
-  console.log('num1:'+operatorNum1);
-  console.log('num2:'+operatorNum2);
-  console.log('type:'+operatorType);
 }
+
 function cleanAll() {
   getResultDiv().innerHTML=0;
   document.getElementsByClassName("operate-clean")[0].innerHTML="AC";
@@ -138,7 +135,7 @@ function operator(_operatorType) {
 function calculate() {
  judgeCaculate=1;
   if(!operatorNum2){
-    operatorNum2=operatorNum1;
+    operatorNum2=operatorNum1;//链式运算
   }
   if(operatorType === '+'){
     getResultDiv().innerHTML = (Number(operatorNum1) + Number(operatorNum2));
@@ -158,6 +155,7 @@ function calculate() {
   changeOperatorBgColorToDefault();
 
 }
+
 function percent() {
   // getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*0.01;
   if(!operatorType){
@@ -169,6 +167,7 @@ function percent() {
 
 
 }
+
 function statusChange() {
   getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*(-1);
 }

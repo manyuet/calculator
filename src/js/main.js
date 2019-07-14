@@ -4,7 +4,7 @@ let operatorType;
 let needReset = false;
 let fontSize1 = 55;
 let fontSize2 = 55;
-
+let judgeCaculate=0;
 window.document.onkeydown = function (event) {
   let e = event || window.event || arguments.callee.caller.arguments[0];
   const operatorTypeList = ['+','-','*','/'];
@@ -56,18 +56,24 @@ function changeFontSize() {
   }
 }
 
-
 function clickNumber(number) {
   const resultDiv = getResultDiv();
   changeCleanBtnText();
-  if (resultDiv.innerHTML === '0' || (operatorType && needReset)) {
+  if(judgeCaculate){
+    judgeCaculate=0;
     needReset = false;
-    resultDiv.innerHTML = number
+    resultDiv.innerHTML = number;
+    changeFontSize();
+  }
+  else if (resultDiv.innerHTML === '0' || (operatorType && needReset )) {
+    needReset = false;
+    resultDiv.innerHTML = number;
     changeFontSize();
   } else {
     resultDiv.innerHTML += number;
     changeFontSize();
   }
+  console.log(judgeCaculate);
   if(operatorType){
     operatorNum2 = Number(getResultDiv().innerHTML);
   }else{
@@ -76,6 +82,9 @@ function clickNumber(number) {
   if(getResultDiv().innerHTML.length>=32){
     getResultDiv().innerHTML = getResultDiv().innerHTML.slice(1,-1) + '0';
   }
+  console.log('num1:'+operatorNum1);
+  console.log('num2:'+operatorNum2);
+  console.log('type:'+operatorType);
 }
 function cleanAll() {
   getResultDiv().innerHTML=0;
@@ -83,7 +92,9 @@ function cleanAll() {
   fontSize1 = 55;
   fontSize2 = 55;
   changeFontSize();
-  changeOperatorBgColorToDefault()
+  changeOperatorBgColorToDefault();
+  operatorNum1=operatorNum2=operatorType='';
+
 }
 
 function getResultDiv() {
@@ -125,6 +136,10 @@ function operator(_operatorType) {
 }
 
 function calculate() {
+ judgeCaculate=1;
+  if(!operatorNum2){
+    operatorNum2=operatorNum1;
+  }
   if(operatorType === '+'){
     getResultDiv().innerHTML = (Number(operatorNum1) + Number(operatorNum2));
   }else if(operatorType === '-'){
@@ -134,16 +149,25 @@ function calculate() {
   }else if(operatorType === '/'){
     getResultDiv().innerHTML = (Number(operatorNum1) / Number(operatorNum2));
   }
-  operatorType = null;
+  operatorNum1=getResultDiv().innerHTML;
   if(getResultDiv().innerHTML.length<=7){
     getResultDiv().style.fontSize = '55px'
   }else {
     getResultDiv().style.fontSize = Math.min(fontSize1, fontSize2) + 'px';
   }
   changeOperatorBgColorToDefault();
+
 }
 function percent() {
-  getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*0.01;
+  // getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*0.01;
+  if(!operatorType){
+    operatorNum1=  getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*0.01;
+  }
+  else{
+    operatorNum2=  getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*0.01;
+  }
+
+
 }
 function statusChange() {
   getResultDiv().innerHTML=Number(getResultDiv().innerHTML)*(-1);

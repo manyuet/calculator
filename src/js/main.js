@@ -4,7 +4,7 @@ let operatorType;
 let needReset = false;//是否需要将数字拼接在后面或者重新显示新的
 let fontSize1 = 55;
 let fontSize2 = 55;
-let judgeCaculate = 0;
+let judgeCaculate = 0;//判断有没有计算过的标志
 window.document.onkeydown = function (event) {//可以使用键盘输入，跟键盘数字运算符绑定
   let e = event || window.event || arguments.callee.caller.arguments[0];
   const operatorTypeList = ['+', '-', '*', '/'];
@@ -25,11 +25,11 @@ window.document.onkeydown = function (event) {//可以使用键盘输入，跟�
   }
 };
 
-function changeCleanBtnText() {
+let changeCleanBtnText = () => {//AC与C的转换
   document.getElementsByClassName("operate-clean")[0].innerHTML = "C";
 }
 
-function changeFontSize() {
+let changeFontSize = () => {
   const resultLength = getResultDiv().innerHTML.length;
   const resultDivStyle = document.getElementsByClassName("result-number")[0].style;
   if (resultLength <= 7) {
@@ -145,7 +145,16 @@ function calculate() {
   if (getResultDiv().innerHTML.length <= 7) {
     getResultDiv().style.fontSize = '55px'
   } else {
-    getResultDiv().style.fontSize = Math.min(fontSize1, fontSize2) + 'px';
+    let resultFontSize = 55;
+    let resultLength = getResultDiv().innerHTML.length;
+    for(let i = resultLength; resultFontSize >= 25;i--){
+      if(i>40){
+        resultFontSize -=5;
+      }else{
+        resultFontSize -=2;
+      }
+    }
+    getResultDiv().style.fontSize = resultFontSize + 'px';
   }
   changeOperatorBgColorToDefault();
 
